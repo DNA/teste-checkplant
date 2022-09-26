@@ -1,0 +1,23 @@
+#! /usr/bin/env ruby
+
+require "bundler"
+Bundler.require
+
+require_relative "cli_option_parser.rb"
+
+class Command
+  include CliOptionParser
+
+  def run
+    if params[:help]
+      print help
+      exit
+    else
+      pp params.to_h
+    end
+  end
+end
+
+c = Command.new
+c.parse
+c.run

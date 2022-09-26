@@ -1,0 +1,13 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    tty-option (0.2.0)
+
+PLATFORMS
+  x86_64-darwin-20
+
+DEPENDENCIES
+  tty-option (~> 0.2.0)
+
+BUNDLED WITH
+   2.2.25

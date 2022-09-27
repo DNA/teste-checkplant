@@ -9,21 +9,21 @@ class Cli
     example "miojo 3 5 7"
   end
 
-  argument :miojo do
+  argument :noodles do
     required
     convert :int
     validate { _1 > 0 }
     desc "Noodles cooking time."
   end
 
-  argument :ampulheta1 do
+  argument :hourglass1 do
     required
     convert :int
     validate { _1 > 0 }
     desc "First hourglass time."
   end
 
-  argument :ampulheta2 do
+  argument :hourglass2 do
     required
     convert :int
     validate { _1 > 0 }

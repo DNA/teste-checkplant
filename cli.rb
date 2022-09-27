@@ -1,4 +1,4 @@
-module CliOptionParser
+module Cli
   def self.included(base)
     base.class_eval do
       include TTY::Option

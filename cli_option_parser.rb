@@ -4,36 +4,34 @@ module CliOptionParser
       include TTY::Option
 
       usage do
+        no_command
+
         desc "Valida o tempo de preparo do miojo usando duas ampulhetas"
-      
-        example <<~EOS
-          miojo -m3 -a5 -a7
-          miojo --miojo 3 --ampulheta=5,7
-          miojo --miojo 3 --ampulheta=5 --ampulheta=7
-        EOS
+
+        example "miojo 3 5 7"
       end
-      
-      option :miojo do
+
+      argument :miojo do
         required
-        short "-m"
         convert :int
         validate { _1 > 0 }
-        desc "O tempo de cozimento do miojo, em minutos."
+        desc "O tempo de cozimento do miojo."
       end
-      
-      option :ampulheta do
+
+      argument :ampulheta1 do
         required
-        arity 2
-        short "-a"
-        long  "--ampulheta tempos"
-        convert :int_list
-        validate { _1 > 0 }
-        desc <<~DESC
-          Informa os valores das ampulhetas em minutos.
-          Pode ser informado multiplas vezes ou em uma lista separada por vírgula.
-        DESC
+        convert :int
+        validate { _1 > 0 && _1 < params[:miojo] }
+        desc "Tempo da primeira ampulheta."
       end
-      
+
+      argument :ampulheta2 do
+        required
+        convert :int
+        validate { _1 > 0 && _1 < params[:miojo] }
+        desc "Tempo da segunda ampulheta."
+      end
+
       flag :help do
         short "-h"
         long "--help"

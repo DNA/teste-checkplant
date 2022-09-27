@@ -19,14 +19,14 @@ class Cli
   argument :ampulheta1 do
     required
     convert :int
-    validate { _1 > 0 && _1 < params[:miojo] }
+    validate { _1 > 0 }
     desc "First hourglass time."
   end
 
   argument :ampulheta2 do
     required
     convert :int
-    validate { _1 > 0 && _1 < params[:miojo] }
+    validate { _1 > 0 }
     desc "Second hourglass time."
   end
 

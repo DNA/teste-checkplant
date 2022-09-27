@@ -4,7 +4,7 @@ class Cli
   usage do
     no_command
 
-    desc "Valida o tempo de preparo do miojo usando duas ampulhetas"
+    desc "Return the noodles cooking time when using two hourglasses to measure time"
 
     example "miojo 3 5 7"
   end
@@ -13,27 +13,27 @@ class Cli
     required
     convert :int
     validate { _1 > 0 }
-    desc "O tempo de cozimento do miojo."
+    desc "Noodles cooking time."
   end
 
   argument :ampulheta1 do
     required
     convert :int
     validate { _1 > 0 && _1 < params[:miojo] }
-    desc "Tempo da primeira ampulheta."
+    desc "First hourglass time."
   end
 
   argument :ampulheta2 do
     required
     convert :int
     validate { _1 > 0 && _1 < params[:miojo] }
-    desc "Tempo da segunda ampulheta."
+    desc "Second hourglass time."
   end
 
   flag :help do
     short "-h"
     long "--help"
-    desc "Exibe o texto de ajuda"
+    desc "Show this help message."
   end
 
   def self.run(...)

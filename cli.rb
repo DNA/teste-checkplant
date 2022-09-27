@@ -1,4 +1,4 @@
-module Cli
+class Cli
   include TTY::Option
 
   usage do
@@ -34,5 +34,23 @@ module Cli
     short "-h"
     long "--help"
     desc "Exibe o texto de ajuda"
+  end
+
+  def self.run(...)
+    new.then(&:parse).run(...)
+  end
+
+  def run
+    if params[:help]
+      puts help
+      exit 0
+    end
+
+    if params.valid?
+      yield params
+    else
+      puts params.errors.summary
+      exit 2
+    end
   end
 end

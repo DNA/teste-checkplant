@@ -1,8 +1,10 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    minitest (5.16.3)
     pastel (0.8.0)
       tty-color (~> 0.5)
+    rake (13.0.6)
     tty-color (0.6.0)
     tty-cursor (0.7.1)
     tty-option (0.2.0)
@@ -20,6 +22,8 @@ PLATFORMS
   x86_64-darwin-20
 
 DEPENDENCIES
+  minitest (~> 5.16)
+  rake (~> 13.0)
   tty-option (~> 0.2.0)
   tty-prompt (~> 0.23.1)
 

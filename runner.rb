@@ -1,3 +1,7 @@
+require 'bundler'
+
+Bundler.require
+
 require_relative 'cooking'
 require_relative 'cli'
 

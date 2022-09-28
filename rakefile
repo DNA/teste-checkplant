@@ -1,0 +1,7 @@
+require 'minitest/test_task'
+require 'stringio'
+
+Rake.application.options.trace = false
+Rake.application.options.trace_output = StringIO.new
+
+Minitest::TestTask.create

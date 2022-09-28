@@ -47,7 +47,7 @@ class Cli
     end
 
     if params.valid?
-      yield params
+      yield params if block_given?
     else
       $stderr.puts params.errors.summary
       exit 2

@@ -49,7 +49,7 @@ class Cli
     if params.valid?
       yield params
     else
-      puts params.errors.summary
+      $stderr.puts params.errors.summary
       exit 2
     end
   end

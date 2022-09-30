@@ -2,7 +2,7 @@ require "bundler"
 
 Bundler.require
 
-require_relative '../cli'
+require_relative '../src/cli'
 
 class CliTest < Minitest::Test
   def setup

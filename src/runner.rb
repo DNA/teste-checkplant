@@ -14,15 +14,14 @@ class Runner
 
   def run
     @cli.run do |params|
-      cooking = @cooking
-        .new(params[:noodles])
+      cooking = @cooking.new(params[:noodles])
         .tap do |c|
           c.hourglasses << Hourglass.new(params[:hourglass1])
           c.hourglasses << Hourglass.new(params[:hourglass2])
         end
     
       unless cooking.valid?
-        cooking.errors.each { puts _1 }
+        cooking.errors.each { $stderr.puts _1 }
     
         exit 3
       end

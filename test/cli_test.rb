@@ -4,7 +4,7 @@ Bundler.require
 
 require_relative '../cli'
 
-class CliTest < BaseTest
+class CliTest < Minitest::Test
   def setup
     @cli = Cli.new
   end

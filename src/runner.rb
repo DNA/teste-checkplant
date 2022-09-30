@@ -14,10 +14,12 @@ class Runner
 
   def run
     @cli.run do |params|
-      cooking = @cooking.new(params[:noodles])
-    
-      cooking.hourglasses << Hourglass.new(params[:hourglass1])
-      cooking.hourglasses << Hourglass.new(params[:hourglass2])
+      cooking = @cooking
+        .new(params[:noodles])
+        .tap do |c|
+          c.hourglasses << Hourglass.new(params[:hourglass1])
+          c.hourglasses << Hourglass.new(params[:hourglass2])
+        end
     
       unless cooking.valid?
         cooking.errors.each { puts _1 }
@@ -27,10 +29,10 @@ class Runner
     
       time = cooking.time_total
     
-      if time.zero?
+      if time.nil?
         puts "You can't cook this noodles with these hourglasses."
       else
-        puts "Total cooking time: #{cooking.time_total.to_i} minutes"
+        puts "Total cooking time: #{cooking.time_total} minutes"
       end
     end
   end

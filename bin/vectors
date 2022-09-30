@@ -1,0 +1,12 @@
+#! /usr/bin/env ruby
+
+require_relative "../src/vector_distance"
+
+if ARGV.empty?
+  puts "Usage: #{$0} FILE"
+  exit 1
+end
+
+vd = VectorDistance.new(ARGV.first)
+vd.calculate
+puts vd.print_table

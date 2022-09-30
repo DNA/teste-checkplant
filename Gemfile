@@ -13,3 +13,5 @@ gem "tty-prompt", "~> 0.23.1"
 gem "minitest", "~> 5.16"
 
 gem "rake", "~> 13.0"
+
+gem "tty-table", "~> 0.12.0"

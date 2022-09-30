@@ -25,29 +25,21 @@ class Cooking
     @errors.empty?
   end
 
-  # O tempo das ampulhetas para o miojo é baseado na equação:
-  #
-  # Tm = Va1 * Ta1 - Va2 * Ta2
-  #
-  # Onde: 
-  #   Tm  = Tempo do miojo
-  #   Ta1 = Tempo da ampulheta 1
-  #   Ta2 = Tempo da ampulheta 2
-  #   Va1 = Voltas necessárias na ampulheta 1
-  #   Va2 = Voltas necessárias na ampulheta 2
   def time_total
     hg1, hg2 = hourglasses.minmax
 
-    # Duas ampulhetas de tempo par não conseguem calcular um tempo impar
-    return 0 if time.odd? && hg1.even? && hg2.even?
-    return 0 if hg1 == hg2
+    loop do
+      diff  = hg2 - hg1
 
-    1.upto(100) do |va2|
-      va1 = (time.to_f + va2 * hg2.to_f) / hg1.to_f
+      break if diff.magnitude == time
 
-      return [va1 * hg1, va2 * hg2].max if va1 % 1 == 0
+      case hg1 <=> hg2
+      when  1 then hg2.turn
+      when  0 then return
+      when -1 then hg1.turn
+      end
     end
 
-    0
+    [hg1, hg2].max
   end
 end

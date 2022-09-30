@@ -40,9 +40,9 @@ class Cooking
 
     # Duas ampulhetas de tempo par não conseguem calcular um tempo impar
     return 0 if time.odd? && hg1.even? && hg2.even?
+    return 0 if hg1 == hg2
 
     1.upto(100) do |va2|
-
       va1 = (time.to_f + va2 * hg2.to_f) / hg1.to_f
 
       return [va1 * hg1, va2 * hg2].max if va1 % 1 == 0

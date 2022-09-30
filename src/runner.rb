@@ -3,6 +3,7 @@ require 'bundler'
 Bundler.require
 
 require_relative 'cooking'
+require_relative 'hourglass'
 require_relative 'cli'
 
 class Runner
@@ -15,8 +16,8 @@ class Runner
     @cli.run do |params|
       cooking = @cooking.new(params[:noodles])
     
-      cooking.hourglasses << params[:hourglass1]
-      cooking.hourglasses << params[:hourglass2]
+      cooking.hourglasses << Hourglass.new(params[:hourglass1])
+      cooking.hourglasses << Hourglass.new(params[:hourglass2])
     
       unless cooking.valid?
         cooking.errors.each { puts _1 }

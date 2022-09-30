@@ -2,7 +2,7 @@ class Cli
   include TTY::Option
 
   usage do
-    no_command
+    command "noodles"
 
     desc "Return the noodles cooking time when using two hourglasses to measure time"
 

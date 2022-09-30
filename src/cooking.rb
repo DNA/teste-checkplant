@@ -35,7 +35,7 @@ class Cooking
 
       case hg1 <=> hg2
       when  1 then hg2.turn
-      when  0 then return
+      when  0 then return 0
       when -1 then hg1.turn
       end
     end

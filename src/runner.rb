@@ -29,7 +29,7 @@ class Runner
     
       time = cooking.time_total
     
-      if time.nil?
+      if time.zero?
         puts "You can't cook this noodles with these hourglasses."
       else
         puts "Total cooking time: #{cooking.time_total} minutes"
